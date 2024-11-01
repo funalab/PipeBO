@@ -61,6 +61,16 @@ class AcquisitionBase(object):
             out = self.optimizer.optimize(f=self.acquisition_function, f_df=self.acquisition_function_withGradients, duplicate_manager=duplicate_manager)
         return out
 
+    def optimize_fix(self, condtion, duplicate_manager=None):
+        """
+        Optimizes the acquisition function (uses a flag from the model to use gradients or not).
+        """
+        if not self.analytical_gradient_acq:
+            out = self.optimizer.optimize_fix(condtion = condtion, f=self.acquisition_function, duplicate_manager=duplicate_manager)
+        else:
+            out = self.optimizer.optimize_fix(condtion = condtion, f=self.acquisition_function, f_df=self.acquisition_function_withGradients, duplicate_manager=duplicate_manager)
+        return out
+
     def _compute_acq(self,x):
 
         raise NotImplementedError('')

@@ -2,7 +2,7 @@ from ..models.gpmodel import GPModel, GPModel_MCMC
 from ..models.rfmodel import RFModel
 from ..models.warpedgpmodel import WarpedGPModel
 from ..models.input_warped_gpmodel import InputWarpedGPModel
-from ..core.evaluators import Sequential, RandomBatch, LocalPenalization, ThompsonBatch
+from ..core.evaluators import Sequential, RandomBatch, LocalPenalization, ThompsonBatch, LocalPenalization_Pipelining
 from ..acquisitions import AcquisitionEI, AcquisitionMPI, AcquisitionLCB, AcquisitionEI_MCMC, AcquisitionMPI_MCMC, AcquisitionLCB_MCMC, AcquisitionLP
 from ..core.errors import InvalidConfigError
 
@@ -20,7 +20,7 @@ class ArgumentsManager(object):
         """
         acquisition_transformation = self.kwargs.get('acquisition_transformation','none')
 
-        if batch_size == 1 or evaluator_type == 'sequential':
+        if batch_size == 1 and evaluator_type == 'sequential':
             return Sequential(acquisition)
 
         elif batch_size >1 and (evaluator_type == 'random' or evaluator_type is  None):
@@ -36,6 +36,14 @@ class ArgumentsManager(object):
             if not isinstance(acquisition, AcquisitionLP):
                 acquisition_lp = AcquisitionLP(model, space, acquisition_optimizer, acquisition, acquisition_transformation)
             return LocalPenalization(acquisition_lp, batch_size)
+
+        elif evaluator_type == 'local_penalization_pipelining':
+            if model_type not in ['GP', 'sparseGP', 'GP_MCMC', 'warpedGP']:
+                raise InvalidConfigError('local_penalization evaluator can only be used with GP models')
+
+            if not isinstance(acquisition, AcquisitionLP):
+                acquisition_lp = AcquisitionLP(model, space, acquisition_optimizer, acquisition, acquisition_transformation)
+            return LocalPenalization_Pipelining(acquisition_lp, batch_size)
 
 
 
