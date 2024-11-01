@@ -1,0 +1,12 @@
+{
+    "batch":1,
+    "num_cores":1,
+    "parameter":{
+        "process1":[
+            {"name" : "x0", "type" : "continuous", "domain" : [-5.0, 5.0]}
+        ],
+        "process2":[
+            {"name" : "x1", "type" : "continuous", "domain" : [-5.0, 5.0]}
+        ]
+    }
+}
