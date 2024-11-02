@@ -31,7 +31,7 @@ See ```requirements.txt``` for details
     ```
 2. Install requirements.
     ```sh
-    % cd pipebo/
+    % cd PipeBO/
     % python -m venv venv
     % source ./venv/bin/activate
     % pip install --upgrade pip
@@ -41,7 +41,7 @@ See ```requirements.txt``` for details
     ```
 3. Run PipeBO with benchmark function.
     ```sh
-    % cd pipebo/src/
+    % cd PipeBO/src/
     % python main.py -bf f01_i01 -json ../confs/example.json  -rs 1 -iter 10
     ```
 
