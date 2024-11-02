@@ -5,9 +5,9 @@ parser = argparse.ArgumentParser(description='Run PipeBO')
 parser.add_argument('-json', required=True, help='json file for problem setting')
 parser.add_argument('-rs', required=True, type=int,help='seed')
 parser.add_argument('-iter', required=True, type=int, help='number of iterations')
-parser.add_argument('-exec', help='How to run: sequential BO or PipeBO (if none both)')
-parser.add_argument('--up', action='store_false', help='Whether to perform intermadiate update')
-parser.add_argument('--pipelp', action='store_false', help='Whether to use local penaliser')
+parser.add_argument('-exec', help='How to run: sequential BO[seq] or PipeBO[pipe] (if none both)')
+parser.add_argument('--up', action='store_false', help='Do not use intermadiate update in pipelining')
+parser.add_argument('--pipelp', action='store_false', help='Do not use local penaliser in pipelining')
 
 methods = ['', ' --up', ' --pipelp', ' --up --pipelp']
 

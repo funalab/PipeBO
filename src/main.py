@@ -22,9 +22,9 @@ parser.add_argument('-bf', required=True, help='benchmark function')
 parser.add_argument('-json', required=True, help='json file for problem setting')
 parser.add_argument('-rs', required=True, type=int,help='seed')
 parser.add_argument('-iter', required=True, type=int, help='number of iterations')
-parser.add_argument('-exec', help='How to run: sequential BO or PipeBO (if none both)')
-parser.add_argument('--up', action='store_false', help='Whether to perform intermadiate update')
-parser.add_argument('--pipelp', action='store_false', help='Whether to use local penaliser')
+parser.add_argument('-exec', help='How to run: sequential BO[seq] or PipeBO[pipe] (if none both)')
+parser.add_argument('--up', action='store_false', help='Do not use intermadiate update in pipelining')
+parser.add_argument('--pipelp', action='store_false', help='Do not use local penaliser in pipelining')
 args = parser.parse_args()
 
 # about -exec
@@ -67,7 +67,7 @@ black_box_function = benchmark_class(dimension)
 
 max_iter = args.iter
 id = 'rs'+str(args.rs).zfill(3) + '_' + 'batch' + str(batch_size).zfill(2)
-id_pipe = 'rs'+str(args.rs).zfill(3) + '_' + 'batch' + str(batch_size).zfill(2) + '_up' + str(int(args.up)) + '_pipelp' + str(int(args.pipelp))
+id_pipe = 'rs'+str(args.rs).zfill(3) + '_' + 'batch' + str(batch_size).zfill(2) + '_up' + str(int(args.up)) + '_' + str(int(args.pipelp))
 
 def random_initial_design(bounds, points_count):
     """
