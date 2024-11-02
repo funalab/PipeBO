@@ -6,7 +6,7 @@ This project is carried out in [Funahashi Lab. at Keio University](https://fun.b
 ## Overview
 PipeBO is a Bayesian optimizaiton method that performs parallelization through pipelining.
 Pipelining enables parallelization of experiments where batch Bayesian optimization cannot be applied due to equipement limitations.
-
+The implementation is based on GPyOpt [[1](#ref1)].
 
 ![overvew](images/overview.png)
 
@@ -51,3 +51,6 @@ The source code is in `src/makefig/`.
 
 ## Acknowledgement
 The development of this algorithm was funded by JST CREST (Grant Number JPMJCR21N1) to [Akira Funahashi](https://github.com/funasoul).
+
+## References
+<a id="ref1"></a>[[1] The GPyOpt authors, GPyOpt: A Bayesian Optimizaiton framework in python (2016).](https://github.com/SheffieldML/GPyOpt)
