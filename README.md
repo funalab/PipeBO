@@ -1,6 +1,6 @@
 # PipeBO: Pipelining Bayesian optimization
 
-This is the code for [title]().
+This is the code for [Asynchronous Batch Bayesian Optimization with Pipelining Evaluations for Experimental Resource–constrained Conditions](http://arxiv.org/abs/2412.04392).
 This project is carried out in [Funahashi Lab. at Keio University](https://fun.bio.keio.ac.jp/)
 
 ## Overview
