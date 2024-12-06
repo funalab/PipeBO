@@ -1,4 +1,4 @@
-# PipeBO: Piepelining Bayesian optimization
+# PipeBO: Pipelining Bayesian optimization
 
 This is the code for [title]().
 This project is carried out in [Funahashi Lab. at Keio University](https://fun.bio.keio.ac.jp/)
